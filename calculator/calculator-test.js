@@ -33,7 +33,7 @@ describe("Monthly calculation functions", function() {
     }
     expect(calculateMonthlyPayment(values)).toEqual('111.11');
   })
-})
+});
 
 describe("simple form validations", function() {
   it("should throw an error when 'amount' input is empty", function(){
@@ -44,7 +44,7 @@ describe("simple form validations", function() {
     }
     expect(calculateMonthlyPayment(values)).toEqual('0.00');
     expect(function() {parser.parse(raw); } ).toThrowError();
-  })
+  });
 
   it("should throw an error when 'years' input is empty", function(){
     const values = {
@@ -54,7 +54,7 @@ describe("simple form validations", function() {
     }
     expect(calculateMonthlyPayment(values)).toEqual('Infinity');
     expect(function() {parser.parse(raw); } ).toThrowError();
-  })
+  });
 
   it("should throw an error when 'rate' input is empty", function(){
     const values = {
@@ -64,7 +64,7 @@ describe("simple form validations", function() {
     }
     expect(calculateMonthlyPayment(values)).toEqual('NaN');
     expect(function() {parser.parse(raw); } ).toThrowError();
-  })
+  });
 
   it("should throw an error when 'rate' input is not a number", function(){
     const values = {
@@ -74,7 +74,7 @@ describe("simple form validations", function() {
     }
     expect(calculateMonthlyPayment(values)).toEqual('NaN');
     expect(function() {parser.parse(raw); } ).toThrowError();
-  })
+  });
 
   it("should throw an error when 'years' input is not a number", function(){
     const values = {
@@ -84,7 +84,7 @@ describe("simple form validations", function() {
     }
     expect(calculateMonthlyPayment(values)).toEqual('NaN');
     expect(function() {parser.parse(raw); } ).toThrowError();
-  })
+  });
 
   it("should throw an error when 'amount' input is not a number", function(){
     const values = {
@@ -94,6 +94,36 @@ describe("simple form validations", function() {
     }
     expect(calculateMonthlyPayment(values)).toEqual('NaN');
     expect(function() {parser.parse(raw); } ).toThrowError();
+  });
+
+  it("should throw an error when 'amount' input is less than 1", function(){
+    const values = {
+      amount: 3000,
+      years: "hi",
+      rate: 5.8
+    }
+    expect(calculateMonthlyPayment(values)).toEqual('NaN');
+    expect(function() {parser.parse(raw); } ).toThrowError();
+  });
+
+  it("should throw an error when 'years' input is less than 1", function(){
+    const values = {
+      amount: 3000,
+      years: "hi",
+      rate: 5.8
+    }
+    expect(calculateMonthlyPayment(values)).toEqual('NaN');
+    expect(function() {parser.parse(raw); } ).toThrowError();
+  });
+
+  it("should throw an error when 'rate' input is less than 1", function(){
+    const values = {
+      amount: 3000,
+      years: "hi",
+      rate: 5.8
+    }
+    expect(calculateMonthlyPayment(values)).toEqual('NaN');
+    expect(function() {parser.parse(raw); } ).toThrowError();
   })
-})
+});
 
