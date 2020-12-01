@@ -11,19 +11,19 @@
       <h1>Loan Calculator 💰💲💵</h1>
     </header>
     <section class="calc-container">
-      <form id="calc-form">
-        <label>
-          Loan Amount
-          <input type="text" id="loan-amount">
-        </label>
-        <label>
-          Term in Years
+      <form id="calc-form" method="post" onsubmit="return getCurrentUIValues()">
+        <label>Loan Amount</label>
+        <span id="amount-error"></span>
+        <input type="text" id="loan-amount">
+
+        <label>Term in Years</label>
+          <span id="year-error"></span>
           <input type="text" id="loan-years">
-        </label>
-        <label>
-          Yearly Rate
+
+        <label>Yearly Rate</label>
+          <span id="rate-error"></span>
           <input type="text" id="loan-rate">
-        </label>
+
         <button type="submit" id="calc-submit">Calculate</button>
       </form>
       <div>
