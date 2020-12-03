@@ -13,7 +13,7 @@ describe("Payments tests", function() {
     expect(allPayments.payment1.tipPercent).toEqual(20);
   })
 
-  it("should not add a new payment with empty inputs", function() {
+  it("should not submit a new payment with empty inputs", function() {
     billAmtInput.value = null;
     submitPaymentInfo();
 
@@ -29,10 +29,12 @@ describe("Payments tests", function() {
     updateSummary();
 
     let curTdList = document.querySelectorAll("#paymentTable tbody tr td");
-    expect(curTdList.length).toEqual(3);
+    expect(curTdList.length).toEqual(4);
     expect(curTdList[0].innerText).toEqual('$50');
     expect(curTdList[1].innerText).toEqual('$10');
     expect(curTdList[2].innerText).toEqual('20%');
+    expect(curTdList[3].innerText).toEqual('X');
+    
 
   })
 

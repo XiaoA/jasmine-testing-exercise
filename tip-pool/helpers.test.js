@@ -1,20 +1,5 @@
 describe("tip tool helper functions", function() {
   beforeEach(function() {
-    // const allPayments = {
-    //   payment1:
-    //   {
-    //     billAmt: 100,
-    //     tipAmt: 20,
-    //     tipPercent: 20
-    //   }, 
-    //   payment2:
-    //   {
-    //     billAmt: 50,
-    //     tipAmt: 10,
-    //     tipPercent: 20
-    //   }
-    // };
-
     billAmtInput.value = 100;
     tipAmtInput.value = 20;
     submitPaymentInfo();
@@ -43,6 +28,15 @@ describe("tip tool helper functions", function() {
     expect(newTr.children.length).toEqual(1);
     expect(newTr.firstChild.innerHTML).toEqual('test');
   });
+
+  it("should generate delete '<td>' and append to '<tr>' on appendDeleteBtn(tr, type)", function() {
+    let newTr = document.createElement('tr');
+
+    appendDeleteBtn(newTr);
+
+    expect(newTr.children.length).toEqual(1);
+    expect(newTr.firstChild.innerHTML).toEqual('X');
+  })
 
    afterEach(function() {
     billAmtInput.value = '';
